@@ -13,28 +13,62 @@
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background: #050505;
-    color: #e5e5e5;
+    background: #04040a;
+    color: #e2e8f0;
     overflow-x: hidden;
 }
 
-/* Animated Glow Background */
+/* Gradient Glow Background */
 body::before {
     content: "";
     position: fixed;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, #ff4d6d, transparent 60%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, #14b8a6, transparent 60%);
     top: -200px;
     left: -200px;
-    filter: blur(120px);
-    animation: moveGlow 12s infinite alternate;
+    filter: blur(140px);
+    animation: moveGlow 15s infinite alternate;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, #8b5cf6, transparent 60%);
+    bottom: -200px;
+    right: -200px;
+    filter: blur(140px);
+    animation: moveGlow2 18s infinite alternate;
 }
 
 @keyframes moveGlow {
-    to {
-        transform: translate(400px, 300px);
-    }
+    to { transform: translate(300px, 300px); }
+}
+
+@keyframes moveGlow2 {
+    to { transform: translate(-300px, -200px); }
+}
+
+/* Canvas */
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+/* Mouse Glow */
+.cursor-glow {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(20,184,166,0.25), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+    transform: translate(-50%, -50%);
 }
 
 /* Navbar */
@@ -42,7 +76,7 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: 20px 60px;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.5);
     backdrop-filter: blur(10px);
     position: sticky;
     top: 0;
@@ -50,40 +84,50 @@ nav {
 
 nav h1 {
     font-family: 'Orbitron';
-    color: #ff4d6d;
+    background: linear-gradient(45deg, #14b8a6, #8b5cf6);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 nav a {
-    color: #aaa;
+    color: #94a3b8;
     margin-left: 25px;
     text-decoration: none;
     transition: 0.3s;
 }
 
 nav a:hover {
-    color: #ff4d6d;
+    color: #14b8a6;
 }
 
 /* Hero */
 .hero {
     text-align: center;
     padding: 120px 20px;
-    animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
 }
 
 .hero h2 {
     font-family: 'Orbitron';
-    font-size: 50px;
+    font-size: 48px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #14b8a6;
+    width: 0;
+    animation: typing 3s steps(20, end) forwards, blink 0.7s infinite;
+}
+
+@keyframes typing {
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
 }
 
 .hero span {
-    color: #ff4d6d;
-    text-shadow: 0 0 20px #ff4d6d;
+    background: linear-gradient(45deg, #14b8a6, #8b5cf6);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 /* Sections */
@@ -96,7 +140,7 @@ nav a:hover {
 /* Scroll Animation */
 .hidden {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(50px);
     transition: all 0.8s ease;
 }
 
@@ -107,8 +151,8 @@ nav a:hover {
 
 /* Cards */
 .card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,77,109,0.2);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
     padding: 25px;
     border-radius: 20px;
     margin: 20px 0;
@@ -116,8 +160,8 @@ nav a:hover {
 }
 
 .card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 0 30px rgba(255,77,109,0.4);
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(20,184,166,0.3);
 }
 
 /* Grid */
@@ -129,41 +173,18 @@ nav a:hover {
 
 /* Skills */
 .skills span {
-    display: inline-block;
     padding: 10px 15px;
     margin: 6px;
-    border: 1px solid #ff4d6d;
     border-radius: 30px;
-    color: #ff4d6d;
-    transition: 0.3s;
-}
-
-.skills span:hover {
-    background: #ff4d6d;
-    color: black;
-}
-
-/* Buttons */
-.btn {
+    background: linear-gradient(45deg, #14b8a6, #8b5cf6);
+    color: white;
     display: inline-block;
-    margin-top: 10px;
-    padding: 10px 18px;
-    border-radius: 20px;
-    background: #ff4d6d;
-    color: black;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    box-shadow: 0 0 15px #ff4d6d;
 }
 
 /* Certificates */
 .cert img {
     width: 100%;
     border-radius: 15px;
-    border: 1px solid #ff4d6d;
     transition: 0.3s;
 }
 
@@ -175,13 +196,16 @@ nav a:hover {
 footer {
     text-align: center;
     padding: 30px;
-    color: #666;
+    color: #64748b;
 }
 
 </style>
 </head>
 
 <body>
+
+<canvas id="bg"></canvas>
+<div class="cursor-glow" id="cursorGlow"></div>
 
 <nav>
     <h1>RM</h1>
@@ -202,17 +226,29 @@ footer {
 <section id="about" class="section hidden">
     <h2>About Me</h2>
     <div class="card">
-        I focus on solving engineering problems using analytical thinking and sustainability.
+        I am a Chemical Engineering student at <b>MIT Academy of Engineering, Pune</b>, 
+        with a strong interest in sustainability, energy systems, and process optimization.
+
+        <br><br>
+
+        My work focuses on solving real-world engineering problems using analytical thinking 
+        and practical implementation, especially in areas like reaction kinetics, water treatment, 
+        and energy-efficient systems.
+
+        <br><br>
+
+        I am continuously developing my skills in data analysis, process calculations, and 
+        computational tools to grow as an engineer.
     </div>
 </section>
 
 <section id="projects" class="section hidden">
     <h2>Projects</h2>
     <div class="grid">
-        <div class="card">Reaction Kinetics <br><a class="btn">View</a></div>
-        <div class="card">Zero Energy Building <br><a class="btn">View</a></div>
-        <div class="card">Hydro Filter <br><a class="btn">View</a></div>
-        <div class="card">Water Analysis <br><a class="btn">View</a></div>
+        <div class="card">Reaction Kinetics</div>
+        <div class="card">Zero Energy Building</div>
+        <div class="card">Hydro Filter</div>
+        <div class="card">Water Analysis</div>
     </div>
 </section>
 
@@ -239,7 +275,7 @@ footer {
     <div class="card">
         Email: mhasayerakshit@email.com <br><br>
         GitHub: Rakshit-eng
-        Phone: 9579592426
+        Phone:9579592426
     </div>
 </section>
 
@@ -257,11 +293,79 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 });
-
 document.querySelectorAll(".hidden").forEach(el => observer.observe(el));
+
+/* Particle Background */
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for (let i = 0; i < 80; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        dx: (Math.random() - 0.5),
+        dy: (Math.random() - 0.5),
+        size: 2
+    });
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(p => {
+        ctx.fillStyle = "#14b8a6";
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    });
+
+    for (let i = 0; i < particles.length; i++) {
+        for (let j = i; j < particles.length; j++) {
+            let dx = particles[i].x - particles[j].x;
+            let dy = particles[i].y - particles[j].y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 120) {
+                ctx.strokeStyle = "rgba(139,92,246,0.1)";
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.stroke();
+            }
+        }
+    }
+
+    requestAnimationFrame(draw);
+}
+
+draw();
+
+/* Mouse Glow */
+const glow = document.getElementById("cursorGlow");
+
+document.addEventListener("mousemove", (e) => {
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
+});
+
+/* Resize Fix */
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
 
 </script>
 
 </body>
 </html>
-   
