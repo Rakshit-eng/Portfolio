@@ -1,55 +1,187 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Rakshit Mhasaye Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
-body{
-font-family: Arial;
-margin:40px;
-background:#f5f5f5;
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #1e293b, #020617);
+    color: #e2e8f0;
 }
-.section{
-background:white;
-padding:20px;
-margin-bottom:20px;
-border-radius:10px;
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 60px;
+    backdrop-filter: blur(10px);
+    background: rgba(2,6,23,0.6);
+    position: sticky;
+    top: 0;
 }
+
+nav h1 {
+    color: #38bdf8;
+}
+
+nav a {
+    color: #cbd5f5;
+    margin-left: 25px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #38bdf8;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h2 {
+    font-size: 45px;
+}
+
+.hero span {
+    background: linear-gradient(45deg, #38bdf8, #6366f1);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    color: #94a3b8;
+}
+
+/* Section */
+.section {
+    padding: 60px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* Glass Cards */
+.card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    padding: 25px;
+    border-radius: 20px;
+    margin: 20px 0;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: 0.4s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px rgba(56,189,248,0.3);
+}
+
+/* Projects grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Skills */
+.skills span {
+    display: inline-block;
+    margin: 6px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #38bdf8, #6366f1);
+    color: white;
+    font-size: 14px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
+}
+
 </style>
 </head>
 
 <body>
 
-<h1>Rakshit Mhasaye</h1>
-<p>Chemical Engineering Student</p>
+<nav>
+    <h1>RM</h1>
+    <div>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
 
-<div class="section">
-<h2>About Me</h2>
-<p>I am a chemical engineering student interested in sustainability, reaction engineering and energy systems.</p>
-</div>
+<section class="hero">
+    <h2>Hello, I'm <span>Rakshit Mhasaye</span></h2>
+    <p>Chemical Engineering Student | Sustainability | Energy Systems</p>
+</section>
 
-<div class="section">
-<h2>Projects</h2>
-<ul>
-<li>Reaction Kinetics Modeling using Differential Equations</li>
-<li>Zero Energy Building Research</li>
-<li>Bio-Inspired Hydro Filter Water Purification</li>
-<li>Water Hardness and Alkalinity Analysis</li>
-</ul>
-</div>
+<section id="about" class="section">
+    <h2>About Me</h2>
+    <div class="card">
+        I am a chemical engineering student passionate about solving real-world problems using engineering principles, sustainability practices, and data-driven approaches.
+    </div>
+</section>
 
-<div class="section">
-<h2>Skills</h2>
-<ul>
-<li>Python</li>
-<li>Excel</li>
-<li>Material Balance</li>
-<li>Reaction Engineering</li>
-</ul>
-</div>
+<section id="projects" class="section">
+    <h2>Projects</h2>
 
-<div class="section">
+    <div class="grid">
+
+        <div class="card">
+            <h3>Reaction Kinetics</h3>
+            <p>Modeled first-order decay using differential equations.</p>
+        </div>
+
+        <div class="card">
+            <h3>Zero Energy Building</h3>
+            <p>Designed energy-efficient building concepts.</p>
+        </div>
+
+        <div class="card">
+            <h3>Hydro Filter</h3>
+            <p>Bio-inspired desalination system.</p>
+        </div>
+
+        <div class="card">
+            <h3>Water Analysis</h3>
+            <p>Hardness & alkalinity using EDTA method.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="skills" class="section">
+    <h2>Skills</h2>
+    <div class="skills">
+        <span>Python</span>
+        <span>Excel</span>
+        <span>Material Balance</span>
+        <span>Reaction Engineering</span>
+        <span>Data Analysis</span>
+    </div>
+</section>
+
+<section id="contact" class="section">
 <h2>Contact</h2>
-<p>Email: yourmail@email.com</p>
+<p>Email: mhasayerakshit@email.com</p>
+<p>Phone: 9579592426</p> 
 </div>
 
 </body>
